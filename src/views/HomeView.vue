@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <a 
+      :key="board.id"
+      v-for="board in $store.state.board">
+      <router-link :to="`/board/${board.id}`">
+        {{board.id}}  |  
+      </router-link>
+    </a>
+    
+    <div
+    :key="board.id"
+    v-for="board in $store.state.board">
+      <p>{{board.id}}</p>
+      <p>{{board.memo}}</p>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+
   }
 }
 </script>
